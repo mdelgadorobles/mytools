@@ -1,0 +1,45 @@
+docker ps -a (listar container)
+docker build -t nombre:myimage /ruta/Dockerfile
+docker run -ti ubuntu:18.04 bash
+docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -ti ubuntu:18.04  (para debuggear con GDB)
+docker rmi ubuntu:18.04
+docker rm id_container
+docker start id_container
+docker attach id_container
+docker cp dfb8fc3100b0:/home/ctf/payload ruta/del/host
+
+
+####confi vim && tmux####
+~/.vimrc  => set mouse=a
+~/.tmux.conf => set -g mouse on
+
+********atajos**************
+":sp [name_file]"
+":vsp [name_file]"
+:1,%s/oldword/newword/g
+vim -O file1.c file2.c
+
+!mona find -s "\xff\xe4" -m "USER32.DLL"
+!mona rop -m *.dll -cpb "\x00\x0a\x0d"
+
+echo "convertir_string_base64" | base64
+echo -n "caracter_convert" | md5sum
+cat << EOF | base64
+base64 -d file_encode > file_a_decoder
+cat << EOF | base64 -d > file_decoder
+echo "41" | xxd -r -p   (Convierte asci)
+os.system("(cat payload.txt; cat) | /opt/protostar/bin/stack5")
+echo -n 'string_to_encoder' | sha1sum
+
+objdump -d ./PROGRAM|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
+
+
+
+
+
+
+
+
+
+
+
