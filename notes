@@ -33,15 +33,20 @@ echo -n 'string_to_encoder' | sha1sum
 
 objdump -d ./PROGRAM|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 
-#### Using the scrollwheel in GNU screen ######
-vim ~/.screenrc
-add line -> termcapinfo xterm* ti@:te@
+######################## costumize screen (~/.screenrc)################################
+#Using the scrollwheel in GNU screen
+termcapinfo xterm* ti@:te@
 
+# Turn off the welcome message
+startup_message off
 
+# Disable visual bell
+vbell off
 
+# Set scrollback buffer to 10000
+defscrollback 10000
 
-
-
-
-
+# Customize the status line
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
 
