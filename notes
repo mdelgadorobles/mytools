@@ -16,7 +16,7 @@ docker cp dfb8fc3100b0:/home/ctf/payload ruta/del/host
 ********atajos**************
 ":sp [name_file]"
 ":vsp [name_file]"
-:1,%s/oldword/newword/g
+:%s/oldword/newword/g
 vim -O file1.c file2.c
 
 !mona find -s "\xff\xe4" -m "USER32.DLL"
