@@ -9,9 +9,15 @@ docker attach id_container
 docker cp dfb8fc3100b0:/home/ctf/payload ruta/del/host
 
 
-####confi vim && tmux####
-~/.vimrc  => set mouse=a
-~/.tmux.conf => set -g mouse on
+#### ~/.vimrc ####
+~/.vimrc
+set mouse=a
+set number
+set shiftwidth=2
+set tabstop=2
+
+#### ~/.tmux.conf  #####
+set -g mouse on
 
 ********atajos**************
 ":sp [name_file]"
