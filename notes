@@ -8,6 +8,10 @@ docker start id_container
 docker attach id_container
 docker cp dfb8fc3100b0:/home/ctf/payload ruta/del/host
 
+-----------Download e Install metaslopoit------------------
+docker pull metasploitframework/metasploit-framework
+docker run --rm -it metasploitframework/metasploit-framework
+
 
 #### ~/.vimrc ####
 ~/.vimrc
