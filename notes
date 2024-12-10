@@ -1,6 +1,6 @@
 docker ps -a (listar container)
 docker build -t nombre:myimage /ruta/Dockerfile
-docker run -ti ubuntu:18.04 bash
+docker run -ti IMAGE bash
 docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -ti ubuntu:18.04  (para debuggear con GDB)
 docker rmi ubuntu:18.04
 docker rm id_container
