@@ -8,11 +8,6 @@ docker start id_container
 docker attach id_container
 docker cp dfb8fc3100b0:/home/ctf/payload ruta/del/host
 
------------Download e Install metaslopoit------------------
-docker pull metasploitframework/metasploit-framework
-docker run --rm -it metasploitframework/metasploit-framework
-
-
 #### ~/.vimrc ####
 ~/.vimrc
 set mouse=a
@@ -45,20 +40,8 @@ echo -n 'string_to_encoder' | sha1sum
 
 objdump -d ./PROGRAM|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 
-######################## costumize screen (~/.screenrc)################################
-#Using the scrollwheel in GNU screen
-termcapinfo xterm* ti@:te@
+######################## Reverse i search back and forth################################
+To enable Ctrl + S for forward search: 
+You need to disable this flow control (XON/XOFF) feature by running the command stty -ixon in your terminal.
 
-# Turn off the welcome message
-startup_message off
-
-# Disable visual bell
-vbell off
-
-# Set scrollback buffer to 10000
-defscrollback 10000
-
-# Customize the status line
-hardstatus alwayslastline
-hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
-
+To make this change permanent: Add stty -ixon to your shell's startup file (e.g., ~/.bashrc for Bash or ~/.zshrc for Zsh) and then restart your terminal or run source ~/.bashrc
