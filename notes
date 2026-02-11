@@ -45,3 +45,30 @@ To enable Ctrl + S for forward search:
 You need to disable this flow control (XON/XOFF) feature by running the command stty -ixon in your terminal.
 
 To make this change permanent: Add stty -ixon to your shell's startup file (e.g., ~/.bashrc for Bash or ~/.zshrc for Zsh) and then restart your terminal or run source ~/.bashrc
+
+################### GDB commands #########################
+find [/search_query_size] start_addr, end_addr, addr_value
+
+The size of each search query value.
+b:bytes 
+h:halfwords (two bytes) 
+w:words (four bytes) 
+g:giant words (eight bytes) 
+
+Ex.
+	find /h 0x7fffffffca50, +0x1000, 0x06d4
+
+############ Setting a Watchpoint on a Memory Address
+To watch a 4-byte integer at address 0x12345678:
+	(gdb) watch *(int *)0x12345678
+
+To watch a single byte at address 0xdeadbeef:
+	(gdb) watch *(char *)0xdeadbeef
+
+############ Source view
+	(gdb) list <first_line_code>,<last_line_code>
+
+########### List memory regions mapped by the specified process
+	(gdb) info proc mappings
+
+
