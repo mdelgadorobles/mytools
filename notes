@@ -67,8 +67,16 @@ To watch a single byte at address 0xdeadbeef:
 
 ############ Source view
 	(gdb) list <first_line_code>,<last_line_code>
+				list <line_code>
 
 ########### List memory regions mapped by the specified process
 	(gdb) info proc mappings
 
+########### Modify memory contents using GDB
+	(gdb) set *0x7fffffffdaa8 =0x41414141
 
+########### Command GDB that could be useful
+	(gdb) help info proc
+	(gdb) info proc mapping
+	(gdb) bt
+	
