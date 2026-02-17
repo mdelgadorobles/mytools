@@ -22,21 +22,14 @@ set -g mouse on
 ":sp [name_file]"
 ":vsp [name_file]"
 :%s/oldword/newword/g
-:%s/\'word\'/newword/g
-:%s/\[/newword/g
-vim -O file1.c file2.c
 
 !mona find -s "\xff\xe4" -m "USER32.DLL"
 !mona rop -m *.dll -cpb "\x00\x0a\x0d"
 
-echo "convertir_string_base64" | base64
 echo -n "caracter_convert" | md5sum
-cat << EOF | base64
-base64 -d file_encode > file_a_decoder
-cat << EOF | base64 -d > file_decoder
-echo "41" | xxd -r -p   (Convierte asci)
-os.system("(cat payload.txt; cat) | /opt/protostar/bin/stack5")
 echo -n 'string_to_encoder' | sha1sum
+base64 -d file_encode > file_a_decoder
+echo "41" | xxd -r -p   (Convierte asci)
 
 objdump -d ./PROGRAM|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 
@@ -45,6 +38,21 @@ To enable Ctrl + S for forward search:
 You need to disable this flow control (XON/XOFF) feature by running the command stty -ixon in your terminal.
 
 To make this change permanent: Add stty -ixon to your shell's startup file (e.g., ~/.bashrc for Bash or ~/.zshrc for Zsh) and then restart your terminal or run source ~/.bashrc
+
+################ Analizing stack ######################
+
+Low ------top stack------						________________
+			args      b-> (0x7fffffffca50) 								|
+			args buffer->0x7fffffffcaa0										|
+									|																	|
+								4096																|
+					end buf->0x7fffffffdaa0									frame
+					 canary->0x7fffffffdaa8 (end buf+0x8)			|
+								 ->0x7fffffffdaac (end buf+0xc)			|
+					retaddr->0x7fffffffdac8										|
+					retaddr->0x7fffffffdacc										|
+								rbp							 ___________________|
+Higher---------------
 
 ################### GDB commands #########################
 find [/search_query_size] start_addr, end_addr, addr_value
