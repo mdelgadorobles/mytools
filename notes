@@ -8,6 +8,17 @@ docker start id_container
 docker attach id_container
 docker cp dfb8fc3100b0:/home/ctf/payload ruta/del/host
 
+################## Env python ###########################
+python3 -m venv myenv
+source myenv/bin/activate
+deactivate (exit env)
+################# Build apache with debbuging option####################
+sudo ./configure --prefix=/usr/local/apache/ --enable-maintainer-mode
+sudo make clean (En caso de haber compilado anteriormente)
+sudo make CFLAGS='-g'
+sudo make install
+########################################################################
+
 #### ~/.vimrc ####
 ~/.vimrc
 set mouse=a
